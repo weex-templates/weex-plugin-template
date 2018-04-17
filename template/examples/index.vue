@@ -1,85 +1,56 @@
 <template>
-  <scroller>
-		<div class="btn-group">
-			<text class='button' @click='play'>Play</text>
-			<text class='button' @click='pause'>Pause</text>
-			<text class='button' @click='reset'>Reset</text>
-    </div>
-    <div class="row">
-      <lottie src='http://192.168.1.107:8082/web/examples/animations/LottieWalkthrough.json' loop=true style='flex:1;height:300px'  ref='lottie'></lottie>
-	    <lottie src='http://192.168.1.107:8082/web/examples/animations/MotionCorpse-Jrcanest.json' loop=true style='flex:1;height:300px'  ref='lottie1'></lottie>
-    </div>
-    <div class="row">
-      <lottie src='http://192.168.1.107:8082/web/examples/animations/LineAnimation.json' loop=true style='flex:1;height:300px'  ref='lottie2'></lottie>
-	    <lottie src='http://192.168.1.107:8082/web/examples/animations/TwitterHeart.json' loop=true style='flex:1;height:300px'  ref='lottie3'></lottie>
-    </div>
-    <div class="row">
-      <lottie src='http://192.168.1.107:8082/web/examples/animations/9squares-AlBoardman.json' loop=true style='flex:1;height:300px'  ref='lottie4'></lottie>
-	    <lottie src='http://192.168.1.107:8082/web/examples/animations/LottieLogo1.json' loop=true style='flex:1;height:300px'  ref='lottie5'></lottie>
-    </div>
-      <div class="row">
-      <lottie src='http://192.168.1.107:8082/web/examples/animations/HamburgerArrow.json' loop=true style='flex:1;height:300px'  ref='lottie6'></lottie>
-	    <lottie src='http://192.168.1.107:8082/web/examples/animations/Watermelon.json' loop=true style='flex:1;height:300px'  ref='lottie7'></lottie>
-    </div>
-  </scroller>
+	<div class="wrapper">
+    <image :src="logo" class="logo" />
+    <text class="greeting">The plugin develop environment is ready!</text>
+    <text class="message">Let's develop a weex plugin!</text>
+		<div @click="createAction" class="button">
+			<text style="color:#fff">Click Me!</text>
+		</div>
+  </div>
 </template>
-<style scoped>
-	.row{
-		flex-direction:row
-	}
-	.btn-group {
-    flex-direction: row;
+
+<style>
+	.wrapper {
     justify-content: center;
-    margin-top: 60px;
+    align-items: center;
   }
-  .button {
-    width: 200px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-size: 40px;
-    margin-left: 30px;
-    margin-right: 30px;
+  .logo {
+    width: 424px;
+    height: 200px;
+  }
+  .greeting {
     text-align: center;
+    margin-top: 20px;
+		line-height: 80px;
+    font-size: 36px;
     color: #41B883;
-    border-width: 2px;
-    border-style: solid;
-    border-color: rgb(162, 217, 192);
-    background-color: rgba(162, 217, 192, 0.2);
   }
+  .message {
+    margin: 30px;
+		margin-top:70px;	
+    font-size: 26px;
+    color: #727272;
+  }
+	.button {
+		margin: 20px;
+		padding:20px;
+		background-color:#1ba1e2;
+		color:#fff;
+	}
 </style>
+
 <script>
-  module.exports = {
-    data: {
-			lottieLists: []
-    },
-		mounted() {
-			this.lottieLists = [
-				this.$refs.lottie,
-				this.$refs.lottie1,
-				this.$refs.lottie2,
-				this.$refs.lottie3,
-				this.$refs.lottie4,
-				this.$refs.lottie5,
-				this.$refs.lottie6,
-				this.$refs.lottie7
-			]
+
+	const {{lowerCamelCaseName}} = weex.requireModule('{{lowerCamelCaseName}}');
+	module.exports = {
+		data: {
+			logo: 'http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png',
 		},
-    methods: {
-			play () {
-				this.lottieLists.forEach(lottie => {
-					lottie.play();
-				})
-			},
-			reset () {
-				this.lottieLists.forEach(lottie => {
-					lottie.reset();
-				})
-			},
-			pause () {
-				this.lottieLists.forEach(lottie => {
-					lottie.pause();
-				})
+		methods: {
+			createAction: function() {
+				{{lowerCamelCaseName}}.show();
 			}
-    }
-  }  
+		}
+	}
 </script>
+

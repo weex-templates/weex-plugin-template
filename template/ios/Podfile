@@ -7,7 +7,7 @@ def common
 	pod 'WeexPluginLoader'
 end
 
-target '<%= iOSProjectName %>' do
+target '{{iOSProjectName}}' do
     common
 end
 
