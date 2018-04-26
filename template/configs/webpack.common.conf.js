@@ -6,7 +6,7 @@ const webEntry = {
   'vendor': path.resolve('node_modules/phantom-limb/index.js')
 }
 const weexEntry = {
-  'index': path.resolve('examples/index.vue')
+  'index': path.resolve('examples/index.vue?entry=true')
 };
 const config = require('./config');
 const helper = require('./helper');
@@ -23,7 +23,7 @@ const plugins = [
    * See: https://webpack.js.org/plugins/banner-plugin/
    */
   new webpack.BannerPlugin({
-    banner: '// { "framework": "Vue"} \n',
+    banner: '// { "framework": "Vue" } \n',
     raw: true,
     exclude: 'Vue'
   })
@@ -34,7 +34,7 @@ const webConfig = {
   entry: webEntry,
   output: {
     path: helper.rootNode('./examples/web'),
-    filename: '[name].web.js'
+    filename: '[name].js'
   },
   /**
    * Options affecting the resolving of modules.
