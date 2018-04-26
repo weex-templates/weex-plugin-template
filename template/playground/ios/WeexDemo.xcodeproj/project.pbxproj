@@ -458,7 +458,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "DEST=$CONFIGURATION_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH\n\nif [[ \"$CONFIGURATION\" = \"Debug\" && \"$PLATFORM_NAME\" != \"iphonesimulator\" ]]; then\nipconfig getifaddr en0 | awk '{printf(\"%s\",$0)}' > \"$DEST/localServer-ip.txt\"\nfi\n\nset -x\n\n";
+			shellScript = "DEST=$CONFIGURATION_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH\n\nif [[ \"$CONFIGURATION\" = \"Debug\" && \"$PLATFORM_NAME\" != \"iphonesimulator\" ]]; then\nipconfig getifaddr en0 | awk '{printf(\"%s\",$0)}' > \"$DEST/localServer-ip.txt\"\nfi\n\nset -x\n\nif nc -w 5 -z localhost 12580 ; then\n    echo \"Port 12580 already in use, server is running\"\nelse\n    open \"$SRCROOT/../../start\"\nfi\n\n";
 		};
 		B5825066F03BDD65A25F2701 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
