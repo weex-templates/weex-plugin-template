@@ -29,6 +29,10 @@ android {
             }
         }
     }
+    lintOptions {
+        disable 'MissingTranslation'
+        disable 'ExtraTranslation'
+    }
 }
 
 dependencies {
